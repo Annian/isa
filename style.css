@@ -402,8 +402,7 @@ a.send-btn:hover {
 //*-----կոնտակտ-------*//
 
 #href {
-  background-color: green;
-  opacity: 0.8;
+  background-color: grey;
   transition: 0.2s ease;
 }
 /*-------company-----------*/
