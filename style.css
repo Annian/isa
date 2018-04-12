@@ -16,8 +16,7 @@ body {
 	color: #fff;
 	background-color: #000;
 	font-size: 1.2em;				/* 19px .ca */
-	font-family: 'IBM Plex Mono', monospace;
-	font-family: 'Poor Story', cursive;
+	font-family: 'Tajawal', sans-serif;
 }
 
 .logo {
@@ -408,3 +407,14 @@ a.send-btn:hover {
   transition: 0.2s ease;
 }
 /*-------company-----------*/
+#company li{ 
+list-style-type: none;
+font-size: 40px;
+}
+#us {
+	margin-bottom: 10em;
+}
+.pictures img {padding-right:2em; float:left; opacity :0.7;}
+.pictures {
+	 margin-top:10em; margin-left: 5em; display: table;
+}
