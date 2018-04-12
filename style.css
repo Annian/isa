@@ -270,6 +270,7 @@ body {
   }
 }
 
+/**---------------end-glitch----------------------*/
 section {
 	position: relative;
 	display: table;
@@ -523,4 +524,27 @@ font-size: 40px;
 .pictures img {padding-right:2em; float:left; opacity :0.7;}
 .pictures {
 	 margin-top:10em; margin-left: 5em; display: table;
+}
+.grid {
+  position: absolute;
+  left: 0;
+  right:0;
+  top:20em;
+}
+.grid img {
+  width: 250px;
+  height: 250px;
+  top: 20em;
+  left: 0;
+  right:0;
+}
+#grid-copy {
+  position: absolute;
+  top: 20em;
+  left: 5px;
+  z-index: -1;
+}
+#grid-copy img {
+  width: 250px;
+  height: 250px;
 }
