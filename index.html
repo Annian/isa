@@ -3,16 +3,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name"viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=1.0, user-scalable=no">
 <title> Pangea</title>
-<link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet"><link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="animate.css">
-<link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js" type="text/javascript"></script>
 <script src="https:cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
 
 </head>
 <body>
-<a href="index.html" class="logo"><img src="pp.png" height="170px" width="170px"></a>
+<a href="index.html" class="logo"><img src="pp.png" height="100px" width="100px"></a>
 <a id="hamburger-icon" href="#" class="open-close-btn">
 <span></span>
 <span></span>
@@ -25,12 +26,29 @@
 <a href="contact.html">contact</a>
 </div>
 </div>
-<section id="home" class="section">
+<!--the-dots-->
+<nav class="nav">
+  <ul>
+    <a href="#one">
+      <li class="active" id="nav1">
+      </li>
+    </a>
+    <a href="#two">
+      <li id="nav2">
+      </li>
+    </a>
+    <a href="#three">
+      <li id="nav3">
+      </li>
+    </a>
+  </ul>
+</nav>
+<section id="home" id="one" class="sec">
   <div class="centered"><div class="wrapper">
-  <span data-text="illustration" class="glitch">Illustration</span>
+  <span data-text="illu^stration" class="glitch">Illu^stration</span>
 </div>
-    <h2 class="animated bounceInDown" style="color: #fff">illustration</h2>
-      <h2 class="animated bounceInDown" style="color:#000">lulu</h2>
+    <h2 class="animated bounceInDown" style="color: #fff"></h2>
+      <h2 class="animated bounceInDown" style="color:#000"></h2>
   </div>
 </section>
 <section id="can">
@@ -39,14 +57,16 @@
 </div>
 </section>
 <!------------------------------------------->
-<div id="service">
+<div id="service"  >
   <div class="centered">
     <h1 class="animated bounceInDown" style="text-shadow: 2px 1px grey; font-size:10px">Design ^ Development </h1>
     </div>
   </div>
 </div>
+<section id="two" class="sec">
+</section>
 <!-------------------------------------------->
-<section id="contact" class="section">
+<section id="contact" id="three" class="sec">
 <div class="centered">
 <div class="container">
   <div class="inner">
@@ -54,7 +74,7 @@
       <div class="panel-content">
         <div class="image-background">
 		<h2 style="color:black; top:70%;"></h2>
-		<h1 style="color:black; margin-top:40%;">new dimension</h1>
+		<h6 style="color:black; margin-top:40%;">new dimension</h6>
         </div>
       </div>
     </div>
@@ -227,6 +247,79 @@ $("#home").on('mousemove mouseleave'), function animationHover(element, animatio
       }, 2000);
     }
   );
+  //-------------dots-------
+  $(window).scroll(function(){
+  var scrollPosition = $(window).scrollTop();
+  var one = $('#one').offset().top,
+      two = $('#two').offset().top,
+      three = $('#three').offset().top;
+  var nav1 = $('a[href="#one"]'),
+      nav2 = $('a[href="#two"]'),
+      nav3 = $('a[href="#three"]');
+  
+  if(scrollPosition >= one) {
+    $('.active').removeClass('active');
+    $('#nav1').addClass('active');
+    nav1.contents('li').text('Section 1');
+    nav1.siblings().contents('li').text('');
+  }
+  if(scrollPosition >= two) {
+    $('.active').removeClass('active');
+    $('#nav2').addClass('active');
+    nav2.contents('li').text('Section 2');
+    nav2.siblings().contents('li').text('');
+  }
+   if(scrollPosition >= three) {
+    $('.active').removeClass('active');
+    $('#nav3').addClass('active');
+    nav3.contents('li').text('Section 3');
+    nav3.siblings().contents('li').text('');
+  }
+});
+
+
+
+
+
+/*------------------------------------------------------
+  smooth-scrolling; taken from https://css-tricks.com/snippets/jquery/smooth-scrolling/
+-------------------------------------------------------*/
+  // Select all links with hashes
+$('a[href*="#"]')
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+      && 
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000, function() {
+          // Callback after animation
+          // Must change focus!
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) { // Checking if the target was focused
+            return false;
+          } else {
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+            $target.focus(); // Set focus again
+          };
+        });
+      }
+    }
+  });
 };
 </script>
 </body>
